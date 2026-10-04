@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="utf-8"?>
+<vector xmlns:android="http://schemas.android.com/apk/res/android"
+    android:width="108dp"
+    android:height="108dp"
+    android:viewportWidth="108"
+    android:viewportHeight="108">
+    <!-- Outer Arc Reactor segments (Cyan #00E5FF) -->
+    <path
+        android:strokeColor="#00E5FF"
+        android:strokeWidth="2.5"
+        android:strokeLineCap="round"
+        android:fillColor="#00000000"
+        android:pathData="M 40,32 A 25,25 0 0,1 68,32" />
+    <path
+        android:strokeColor="#00E5FF"
+        android:strokeWidth="2.5"
+        android:strokeLineCap="round"
+        android:fillColor="#00000000"
+        android:pathData="M 76,46 A 25,25 0 0,1 68,76" />
+    <path
+        android:strokeColor="#00E5FF"
+        android:strokeWidth="2.5"
+        android:strokeLineCap="round"
+        android:fillColor="#00000000"
+        android:pathData="M 40,76 A 25,25 0 0,1 32,46" />
+
+    <!-- Outer tick markers -->
+    <path
+        android:strokeColor="#80D8FF"
+        android:strokeWidth="2.0"
+        android:strokeLineCap="round"
+        android:pathData="M 54,26 L 54,30 M 78,42 L 74,44 M 78,66 L 74,64 M 54,82 L 54,78 M 30,66 L 34,64 M 30,42 L 34,44" />
+
+    <!-- Inner reactor ring -->
+    <path
+        android:strokeColor="#00B4D8"
+        android:strokeWidth="2"
+        android:fillColor="#1500E5FF"
+        android:pathData="M 54,38 A 16,16 0 1,0 54,70 A 16,16 0 1,0 54,38" />
+
+    <!-- Center Reactor Core Diamond with J/Arrow element -->
+    <path
+        android:fillColor="#00E5FF"
+        android:pathData="M 54,42 L 63,54 L 54,66 L 45,54 Z" />
+
+    <!-- Inner Core Bright White Accent -->
+    <path
+        android:fillColor="#FFFFFF"
+        android:pathData="M 54,48 L 58,54 L 54,60 L 50,54 Z" />
+
+    <!-- Dynamic Financial Tech Upward Notch -->
+    <path
+        android:strokeColor="#FFFFFF"
+        android:strokeWidth="1.5"
+        android:strokeLineCap="round"
+        android:fillColor="#00000000"
+        android:pathData="M 52,55 L 54,52 L 56,55" />
+</vector>
