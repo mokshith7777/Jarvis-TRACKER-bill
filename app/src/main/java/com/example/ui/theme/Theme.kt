@@ -7,16 +7,16 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.graphics.Color
 
 private val JarvisDarkColorScheme = darkColorScheme(
-  primary = JarvisCyan,
-  onPrimary = Color(0xFF001F24),
+  primary = JarvisNeonRed,
+  onPrimary = Color.White,
   primaryContainer = JarvisCyanContainer,
-  onPrimaryContainer = Color(0xFF70F5FF),
-  secondary = JarvisHoloBlue,
-  onSecondary = Color(0xFF001E28),
-  secondaryContainer = Color(0xFF004D61),
-  onSecondaryContainer = Color(0xFFBBE9FF),
-  tertiary = JarvisGold,
-  onTertiary = Color(0xFF241A00),
+  onPrimaryContainer = Color(0xFFFFB3C1),
+  secondary = JarvisNeonBlue,
+  onSecondary = Color.White,
+  secondaryContainer = Color(0xFF06265C),
+  onSecondaryContainer = Color(0xFFB9D7FF),
+  tertiary = JarvisNeonGreen,
+  onTertiary = Color(0xFF00150A),
   background = JarvisVoid,
   onBackground = TextPrimary,
   surface = JarvisDarkNavy,
@@ -24,32 +24,32 @@ private val JarvisDarkColorScheme = darkColorScheme(
   surfaceVariant = JarvisCard,
   onSurfaceVariant = TextSecondary,
   outline = JarvisCardBorder,
-  outlineVariant = Color(0xFF1E355B),
-  error = JarvisRed,
+  outlineVariant = Color(0xFF24513A),
+  error = JarvisNeonRed,
   onError = Color.White
 )
 
 private val JarvisLightColorScheme = lightColorScheme(
-  primary = Color(0xFF006877),
+  primary = Color(0xFFD50032),
   onPrimary = Color.White,
-  primaryContainer = Color(0xFFA1EFFF),
-  onPrimaryContainer = Color(0xFF001F25),
-  secondary = Color(0xFF00657E),
+  primaryContainer = Color(0xFFFFD9DF),
+  onPrimaryContainer = Color(0xFF3A000B),
+  secondary = Color(0xFF1557C0),
   onSecondary = Color.White,
-  tertiary = Color(0xFF7D5700),
-  background = Color(0xFFF6F8FC),
+  tertiary = Color(0xFF008A45),
+  background = Color(0xFFF7F9FC),
   onBackground = Color(0xFF0B1320),
   surface = Color.White,
   onSurface = Color(0xFF0B1320),
-  surfaceVariant = Color(0xFFE2E8F0),
+  surfaceVariant = Color(0xFFE9F5EF),
   onSurfaceVariant = Color(0xFF475569),
-  outline = Color(0xFFCBD5E1),
+  outline = Color(0xFFB7C7BC),
   error = Color(0xFFBA1A1A)
 )
 
 @Composable
 fun JarvisTheme(
-  darkTheme: Boolean = true, // Default to Jarvis futuristic HUD dark theme
+  darkTheme: Boolean = true,
   content: @Composable () -> Unit
 ) {
   val colorScheme = if (darkTheme) JarvisDarkColorScheme else JarvisLightColorScheme
