@@ -59,9 +59,10 @@ import com.example.ui.JarvisExpenseViewModel
 import com.example.ui.components.HudCard
 import com.example.ui.theme.JarvisCard
 import com.example.ui.theme.JarvisCardBorder
-import com.example.ui.theme.JarvisCyan
+import com.example.ui.theme.JarvisNeonRed
+import com.example.ui.theme.JarvisNeonBlue
 import com.example.ui.theme.JarvisDarkNavy
-import com.example.ui.theme.JarvisGreen
+import com.example.ui.theme.JarvisNeonGreen
 import com.example.ui.theme.JarvisVoid
 import com.example.ui.theme.TextMuted
 import com.example.ui.theme.TextPrimary
@@ -111,7 +112,7 @@ fun SettingsScreen(
           Icon(
             imageVector = Icons.AutoMirrored.Filled.ArrowBack,
             contentDescription = "Back",
-            tint = JarvisCyan
+            tint = JarvisNeonRed
           )
         }
         Spacer(modifier = Modifier.width(8.dp))
