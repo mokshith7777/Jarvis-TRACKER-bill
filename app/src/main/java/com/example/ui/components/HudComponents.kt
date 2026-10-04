@@ -70,6 +70,7 @@ import com.example.ui.theme.JarvisDarkNavy
 import com.example.ui.theme.JarvisGreen
 import com.example.ui.theme.JarvisHoloBlue
 import com.example.ui.theme.JarvisRed
+import com.example.ui.theme.JarvisNeonGreen
 import com.example.ui.theme.JarvisVoid
 import com.example.ui.theme.TextMuted
 import com.example.ui.theme.TextPrimary
@@ -99,11 +100,19 @@ fun HudCard(
     modifier
   }
 
-  Surface(
+  Box(
     modifier = clickableModifier
-      .border(1.dp, JarvisCardBorder, shape),
-    shape = shape,
-    color = JarvisCard
+      .clip(shape)
+      .background(
+        Brush.linearGradient(
+          colors = listOf(
+            JarvisNeonGreen.copy(alpha = 0.12f),
+            Color(0xFF06110C).copy(alpha = 0.86f),
+            JarvisNeonGreen.copy(alpha = 0.06f)
+          )
+        )
+      )
+      .border(1.dp, JarvisNeonGreen.copy(alpha = 0.42f), shape)
   ) {
     Column {
       if (hasTopGlow) {
