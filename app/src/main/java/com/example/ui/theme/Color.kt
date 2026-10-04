@@ -2,22 +2,33 @@ package com.example.ui.theme
 
 import androidx.compose.ui.graphics.Color
 
-// Jarvis HUD Futuristic Palette
-val JarvisVoid = Color(0xFF070B16)
-val JarvisDarkNavy = Color(0xFF0D1527)
-val JarvisCard = Color(0xFF131F37)
-val JarvisCardElevated = Color(0xFF1A2A49)
-val JarvisCardBorder = Color(0xFF22385F)
-val JarvisCyan = Color(0xFF00E5FF)
-val JarvisCyanDim = Color(0xFF007A8A)
-val JarvisCyanContainer = Color(0xFF003740)
-val JarvisHoloBlue = Color(0xFF00B4D8)
-val JarvisElectricBlue = Color(0xFF2979FF)
-val JarvisGold = Color(0xFFFFB703)
-val JarvisGreen = Color(0xFF00E676)
-val JarvisRed = Color(0xFFFF3366)
+// JARVIS TRACKER Neon Glass HUD Palette
+val JarvisVoid = Color(0xFF050507)
+val JarvisDarkNavy = Color(0xFF080B14)
+val JarvisCard = Color(0xFF0B1713).copy(alpha = 0.78f)
+val JarvisCardElevated = Color(0xFF10231B).copy(alpha = 0.88f)
+val JarvisCardBorder = Color(0xFF39FF88).copy(alpha = 0.38f)
+
+// Primary: neon red
+val JarvisNeonRed = Color(0xFFFF1744)
+val JarvisNeonRedHot = Color(0xFFFF0033)
+val JarvisRed = JarvisNeonRed
+val JarvisCyan = JarvisNeonRed
+val JarvisCyanDim = Color(0xFF8B1028)
+val JarvisCyanContainer = Color(0xFF3A0815)
+
+// Secondary: neon blue
+val JarvisNeonBlue = Color(0xFF2979FF)
+val JarvisNeonBlueHot = Color(0xFF00B8FF)
+val JarvisHoloBlue = JarvisNeonBlue
+val JarvisElectricBlue = JarvisNeonBlueHot
+
+// Glass cards / status
+val JarvisNeonGreen = Color(0xFF39FF88)
+val JarvisGreen = JarvisNeonGreen
+val JarvisGold = Color(0xFFFFD54A)
 val JarvisAmber = Color(0xFFFF9100)
 
-val TextPrimary = Color(0xFFF1F5F9)
-val TextSecondary = Color(0xFF94A3B8)
-val TextMuted = Color(0xFF64748B)
+val TextPrimary = Color(0xFFF8FAFC)
+val TextSecondary = Color(0xFFB7C4D6)
+val TextMuted = Color(0xFF718096)
