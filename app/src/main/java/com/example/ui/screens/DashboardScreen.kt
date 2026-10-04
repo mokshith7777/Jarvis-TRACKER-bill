@@ -36,10 +36,21 @@ import androidx.compose.material.icons.filled.Send
 import androidx.compose.material.icons.filled.Settings
 import androidx.compose.material.icons.filled.Shield
 import androidx.compose.material.icons.filled.Tune
+import androidx.compose.material.icons.filled.History
+import androidx.compose.material.icons.filled.Analytics
+import androidx.compose.material.icons.filled.Menu
+import androidx.compose.material.icons.filled.AddCircle
+import androidx.compose.material.icons.filled.Sync
 import androidx.compose.material3.FloatingActionButton
 import androidx.compose.material3.Icon
 import androidx.compose.material3.IconButton
 import androidx.compose.material3.LinearProgressIndicator
+import androidx.compose.material3.ModalDrawerSheet
+import androidx.compose.material3.ModalNavigationDrawer
+import androidx.compose.material3.NavigationDrawerItem
+import androidx.compose.material3.NavigationDrawerItemDefaults
+import androidx.compose.material3.DrawerValue
+import androidx.compose.material3.rememberDrawerState
 import androidx.compose.material3.OutlinedTextField
 import androidx.compose.material3.OutlinedTextFieldDefaults
 import androidx.compose.material3.Surface
@@ -50,6 +61,7 @@ import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
+import androidx.compose.runtime.rememberCoroutineScope
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
@@ -104,9 +116,123 @@ fun DashboardScreen(
 
   var naturalCommandText by remember { mutableStateOf("") }
   val keyboardController = LocalSoftwareKeyboardController.current
+  val drawerState = rememberDrawerState(initialValue = DrawerValue.Closed)
+  val drawerScope = rememberCoroutineScope()
+
+  fun closeDrawer() {
+    drawerScope.launch { drawerState.close() }
+  }
 
   val recentTransactions = transactions.take(4)
 
+  ModalNavigationDrawer(
+    drawerState = drawerState,
+    drawerContent = {
+      ModalDrawerSheet(
+        drawerContainerColor = Color(0xF20A100D),
+        drawerContentColor = TextPrimary
+      ) {
+        Column(
+          modifier = Modifier
+            .fillMaxWidth()
+            .padding(horizontal = 14.dp, vertical = 20.dp)
+        ) {
+          Row(
+            modifier = Modifier
+              .fillMaxWidth()
+              .padding(horizontal = 8.dp, vertical = 8.dp),
+            verticalAlignment = Alignment.CenterVertically
+          ) {
+            Box(
+              modifier = Modifier
+                .size(42.dp)
+                .clip(CircleShape)
+                .background(JarvisRed.copy(alpha = 0.14f))
+                .border(1.dp, JarvisRed.copy(alpha = 0.55f), CircleShape),
+              contentAlignment = Alignment.Center
+            ) {
+              Icon(Icons.Default.Shield, contentDescription = null, tint = JarvisRed, modifier = Modifier.size(22.dp))
+            }
+            Spacer(modifier = Modifier.width(10.dp))
+            Column {
+              Text("JARVIS TRACKER", color = TextPrimary, fontSize = 15.sp, fontWeight = FontWeight.ExtraBold, fontFamily = FontFamily.Monospace)
+              Text("COMMAND CENTER", color = JarvisGreen, fontSize = 9.sp, fontWeight = FontWeight.Bold, letterSpacing = 1.sp)
+            }
+          }
+
+          Spacer(modifier = Modifier.height(18.dp))
+
+          Text("NAVIGATION", color = TextMuted, fontSize = 10.sp, fontWeight = FontWeight.Bold, letterSpacing = 1.5.sp, modifier = Modifier.padding(horizontal = 12.dp, vertical = 8.dp))
+
+          NavigationDrawerItem(
+            label = { Text("Dashboard", fontWeight = FontWeight.Bold) },
+            selected = true,
+            onClick = { closeDrawer() },
+            icon = { Icon(Icons.Default.Shield, contentDescription = null) },
+            colors = NavigationDrawerItemDefaults.colors(
+              selectedContainerColor = JarvisRed.copy(alpha = 0.18f),
+              selectedIconColor = JarvisRed,
+              selectedTextColor = JarvisRed,
+              unselectedIconColor = TextSecondary,
+              unselectedTextColor = TextPrimary
+            ),
+            modifier = Modifier.padding(vertical = 2.dp)
+          )
+          NavigationDrawerItem(
+            label = { Text("Add Expense", fontWeight = FontWeight.Bold) },
+            selected = false,
+            onClick = { closeDrawer(); onNavigateToAdd() },
+            icon = { Icon(Icons.Default.AddCircle, contentDescription = null) },
+            colors = NavigationDrawerItemDefaults.colors(unselectedIconColor = JarvisGreen, unselectedTextColor = TextPrimary),
+            modifier = Modifier.padding(vertical = 2.dp)
+          )
+          NavigationDrawerItem(
+            label = { Text("History", fontWeight = FontWeight.Bold) },
+            selected = false,
+            onClick = { closeDrawer(); onNavigateToHistory() },
+            icon = { Icon(Icons.Default.History, contentDescription = null) },
+            colors = NavigationDrawerItemDefaults.colors(unselectedIconColor = JarvisNeonBlue, unselectedTextColor = TextPrimary),
+            modifier = Modifier.padding(vertical = 2.dp)
+          )
+          NavigationDrawerItem(
+            label = { Text("Analytics", fontWeight = FontWeight.Bold) },
+            selected = false,
+            onClick = { closeDrawer(); onNavigateToAnalytics() },
+            icon = { Icon(Icons.Default.Analytics, contentDescription = null) },
+            colors = NavigationDrawerItemDefaults.colors(unselectedIconColor = JarvisNeonBlue, unselectedTextColor = TextPrimary),
+            modifier = Modifier.padding(vertical = 2.dp)
+          )
+          NavigationDrawerItem(
+            label = { Text("Sync Diagnostics", fontWeight = FontWeight.Bold) },
+            selected = false,
+            onClick = { closeDrawer(); onNavigateToSyncDiagnostics() },
+            icon = { Icon(Icons.Default.Sync, contentDescription = null) },
+            colors = NavigationDrawerItemDefaults.colors(unselectedIconColor = JarvisGreen, unselectedTextColor = TextPrimary),
+            modifier = Modifier.padding(vertical = 2.dp)
+          )
+          NavigationDrawerItem(
+            label = { Text("Settings", fontWeight = FontWeight.Bold) },
+            selected = false,
+            onClick = { closeDrawer(); onNavigateToSettings() },
+            icon = { Icon(Icons.Default.Settings, contentDescription = null) },
+            colors = NavigationDrawerItemDefaults.colors(unselectedIconColor = JarvisRed, unselectedTextColor = TextPrimary),
+            modifier = Modifier.padding(vertical = 2.dp)
+          )
+
+          Spacer(modifier = Modifier.weight(1f))
+
+          HudCard(glowColor = JarvisGreen, hasTopGlow = true) {
+            Column {
+              Text("SYSTEM STATUS", color = JarvisGreen, fontSize = 10.sp, fontWeight = FontWeight.Bold, letterSpacing = 1.sp)
+              Spacer(modifier = Modifier.height(6.dp))
+              Text("LOCAL LEDGER ONLINE", color = TextPrimary, fontSize = 11.sp, fontWeight = FontWeight.Bold, fontFamily = FontFamily.Monospace)
+              Text("JARVIS CORE READY", color = TextMuted, fontSize = 9.sp, fontFamily = FontFamily.Monospace)
+            }
+          }
+        }
+      }
+    }
+  ) {
   Box(
     modifier = modifier
       .fillMaxSize()
@@ -170,16 +296,16 @@ fun DashboardScreen(
             )
             Spacer(modifier = Modifier.width(6.dp))
             IconButton(
-              onClick = onNavigateToSettings,
+              onClick = { drawerScope.launch { drawerState.open() } },
               modifier = Modifier
                 .size(36.dp)
-                .testTag("settings_button")
+                .testTag("sidebar_button")
             ) {
               Icon(
-                imageVector = Icons.Default.Tune,
-                contentDescription = "Settings",
-                tint = TextSecondary,
-                modifier = Modifier.size(20.dp)
+                imageVector = Icons.Default.Menu,
+                contentDescription = "Open navigation",
+                tint = JarvisRed,
+                modifier = Modifier.size(22.dp)
               )
             }
           }
@@ -572,5 +698,6 @@ fun DashboardScreen(
         modifier = Modifier.size(28.dp)
       )
     }
+  }
   }
 }
